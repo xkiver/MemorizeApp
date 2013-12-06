@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,9 +45,21 @@ public class MemorizeActivity extends ActionBarActivity implements CardSelectedL
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.memorize, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.scoreButton:
+	        	Intent intent = new Intent(MemorizeActivity.this, RankingActivity.class);
+				startActivity(intent);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
 	}
 	
 	private void createVariables(){
@@ -86,6 +99,8 @@ public class MemorizeActivity extends ActionBarActivity implements CardSelectedL
 						public void onAcceptPressed(DialogInterface dialog, String name) {
 							dialog.dismiss();
 							Intent intent = new Intent(MemorizeActivity.this, RankingActivity.class);
+							intent.putExtra("name", name);
+							intent.putExtra("score", score);
 							startActivity(intent);
 						}
 					});
@@ -104,9 +119,7 @@ public class MemorizeActivity extends ActionBarActivity implements CardSelectedL
 				
 				scoreText.setText(scoreString);
 			} else {
-				Toast.makeText(getApplicationContext(), 
-							   getString(R.string.bad_text), 
-							   Toast.LENGTH_SHORT).show();
+				scoreText.setText(getString(R.string.bad_text));
 				executePostDelayed(card, position);
 			}
 		} else {
