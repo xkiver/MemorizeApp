@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Memorize</string>
+    <string name="ranking_title">Ranking</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="score_title">Score: %1$s</string>
+    <string name="winned_text">Very good!</string>
+    <string name="bad_text">Sorry :(</string>
+    <string name="try_again_text">Try again!</string>
+    
+    <string name="dialog_title">Congratulations</string>
+    <string name="dialog_down_text">Please, put your name to see the ranking</string>
+    <string name="accept_button">Accept</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="name_hint">Put your name</string>
+
+</resources>
