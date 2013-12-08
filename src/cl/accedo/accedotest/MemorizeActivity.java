@@ -150,7 +150,7 @@ public class MemorizeActivity extends ActionBarActivity implements CardSelectedL
 				
 				scoreText.setText(scoreString);
 			}
-		}, 500);
+		}, 1000);
 	}
 
 }

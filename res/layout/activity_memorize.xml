@@ -10,12 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/scoreLayout"
+        android:layout_centerInParent="true"
         android:numColumns="4" />
 
     <RelativeLayout
         android:id="@+id/scoreLayout"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:background="@android:color/black" >
@@ -28,7 +29,7 @@
             android:layout_centerVertical="true"
             android:text="@string/score_title"
             android:textColor="@android:color/white"
-            android:textSize="15sp" />
+            android:textSize="17sp" />
         
     </RelativeLayout>
 

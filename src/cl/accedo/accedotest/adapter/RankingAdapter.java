@@ -46,7 +46,7 @@ public class RankingAdapter extends ArrayAdapter<RankingModel> {
 		
 		rankingText.setText(String.valueOf(position + 1));
 		nameText.setText(model.getName());
-		scoreText.setText(model.getScore());
+		scoreText.setText(String.valueOf(model.getScore()));
 		
 		return convertView;
 	}

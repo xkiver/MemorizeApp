@@ -2,21 +2,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MemorizeActivity" >
+    tools:context=".RankingActivity" >
     
-    <ListView
-        android:id="@+id/rankingList"
+    <LinearLayout 
+        android:id="@+id/titleLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+	    android:layout_height="20dp"
+	    android:background="@android:color/black">
+        
+        <TextView 
+	        android:id="@+id/rankingText"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="10dp"
+		    android:layout_gravity="center"
+		    android:text="@string/ranking_text"
+		    android:textSize="15sp"
+		    android:textColor="@android:color/white"
+		    android:layout_weight="1"/>
+	    
+	    <TextView 
+	        android:id="@+id/nameText"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="10dp"
+		    android:layout_gravity="center"
+		    android:text="@string/name_text"
+		    android:textSize="15sp"
+		    android:textColor="@android:color/white"
+		    android:layout_weight="2"/>
+	    
+	    <TextView 
+	        android:id="@+id/scoreText"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="10dp"
+		    android:layout_gravity="center"
+		    android:text="@string/score_text"
+		    android:textSize="15sp"
+		    android:textColor="@android:color/white"
+		    android:layout_weight="1"/>
+        
+    </LinearLayout>
     
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:indeterminate="true"
-        android:visibility="gone" />
+    <RelativeLayout
+        android:id="@+id/listLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/titleLayout"
+        tools:context=".RankingActivity" >
+	    
+	    <ListView
+	        android:id="@+id/rankingList"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent" />
+	    
+	    <ProgressBar
+	        android:id="@+id/progressBar"
+	        style="?android:attr/progressBarStyleLarge"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_centerVertical="true"
+	        android:indeterminate="true"
+	        android:visibility="gone" />
+    
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -3,7 +3,7 @@ package cl.accedo.accedotest.models;
 public class RankingModel {
 	
 	private String name;
-	private String score;
+	private int score;
 	
 	public String getName() {
 		return name;
@@ -13,11 +13,11 @@ public class RankingModel {
 		this.name = name;
 	}
 	
-	public String getScore() {
+	public int getScore() {
 		return score;
 	}
 	
-	public void setScore(String score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 

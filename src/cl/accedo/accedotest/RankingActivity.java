@@ -81,7 +81,7 @@ public class RankingActivity extends ActionBarActivity {
 				try{
 					db.execSQL("INSERT INTO ranking (name, score) " +
 													"VALUES ('" + name + "', '" + 
-																  String.valueOf(score) + "')");
+																  score + "')");
 				} finally {
 					db.setTransactionSuccessful();
 				}
@@ -93,7 +93,7 @@ public class RankingActivity extends ActionBarActivity {
 				do {
 					RankingModel model = new RankingModel();
 					model.setName(c.getString(1));
-					model.setScore(c.getString(2));
+					model.setScore(c.getInt(2));
 					
 					rankingList.add(model);
 				} while (c.moveToNext());
