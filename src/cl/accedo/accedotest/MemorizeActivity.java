@@ -32,11 +32,32 @@ public class MemorizeActivity extends ActionBarActivity implements CardSelectedL
 	private int score = 0;
 	private CardModel lastCard;
 	private GridAdapter adapter;
+	
+	private static final String KEY_COUNTER = "Memorize::Counter";
+	private static final String KEY_LAST_POSITION = "Memorize::LastPosition";
+	private static final String KEY_PAIRS_COUNTER = "Memorize::PairsCounter";
+	private static final String KEY_SCORE = "Memorize::Score";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_memorize);
+		
+		if ((savedInstanceState != null)){
+			if(savedInstanceState.containsKey(KEY_COUNTER)) {
+				counter = savedInstanceState.getInt(KEY_COUNTER);
+			}
+			if(savedInstanceState.containsKey(KEY_LAST_POSITION)) {
+				lastPosition = savedInstanceState.getInt(KEY_LAST_POSITION);
+			}
+			if(savedInstanceState.containsKey(KEY_PAIRS_COUNTER)) {
+				pairsCounter = savedInstanceState.getInt(KEY_PAIRS_COUNTER);
+			}
+			if(savedInstanceState.containsKey(KEY_SCORE)) {
+				score = savedInstanceState.getInt(KEY_SCORE);
+			}
+		}
+		
 		
 		createVariables();
 		
@@ -68,6 +89,11 @@ public class MemorizeActivity extends ActionBarActivity implements CardSelectedL
 	}
 	
 	private void setGridData(){
+		counter = 0;
+		lastPosition = 0;
+		pairsCounter = 0;
+		score = 0;
+		
 		cards = Utils.createCards();
 		
 		adapter = new GridAdapter(getApplicationContext(), 
@@ -97,11 +123,18 @@ public class MemorizeActivity extends ActionBarActivity implements CardSelectedL
 						
 						@Override
 						public void onAcceptPressed(DialogInterface dialog, String name) {
-							dialog.dismiss();
-							Intent intent = new Intent(MemorizeActivity.this, RankingActivity.class);
-							intent.putExtra("name", name);
-							intent.putExtra("score", score);
-							startActivity(intent);
+							if(!Utils.isEmptyOrNull(name)){
+								dialog.dismiss();
+								Intent intent = new Intent(MemorizeActivity.this, RankingActivity.class);
+								intent.putExtra("name", name);
+								intent.putExtra("score", score);
+								setGridData();
+								startActivity(intent);
+							} else {
+								Toast.makeText(getApplicationContext(), 
+										   	   getString(R.string.dialog_down_text), 
+										       Toast.LENGTH_SHORT).show();
+							}
 						}
 					});
 					dialog.show();
@@ -150,7 +183,16 @@ public class MemorizeActivity extends ActionBarActivity implements CardSelectedL
 				
 				scoreText.setText(scoreString);
 			}
-		}, 1000);
+		}, 500);
 	}
+	
+	@Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_COUNTER, counter);
+        outState.putInt(KEY_LAST_POSITION, lastPosition);
+        outState.putInt(KEY_PAIRS_COUNTER, pairsCounter);
+        outState.putInt(KEY_SCORE, score);
+    }
 
 }

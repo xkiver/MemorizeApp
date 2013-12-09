@@ -11,7 +11,7 @@ public class DataBaseClass extends SQLiteOpenHelper {
     
     private String sqlString = "CREATE TABLE 'ranking' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, " +
     												    "'name' TEXT, " +
-    												    "'score' INTEGER)";
+    												    "'score' REAL)";
     
     public DataBaseClass(Context ctx){
     	super(ctx, DATABASE_NAME, null, DATABASE_VERSION);

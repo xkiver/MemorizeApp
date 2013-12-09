@@ -46,5 +46,12 @@ public class Utils {
 		
 		return R.drawable.card_bg;
 	}
+	
+	public static boolean isEmptyOrNull(String var){
+		if(var == null || var.equals(""))
+			return true;
+		else
+			return false;
+	}
 
 }

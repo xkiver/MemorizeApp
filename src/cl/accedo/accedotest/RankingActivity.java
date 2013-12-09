@@ -76,7 +76,7 @@ public class RankingActivity extends ActionBarActivity {
 	private List<RankingModel> saveToDataBaseAndRetrieveData(String name, int score){
 		SQLiteDatabase db = dbInstance.getWritableDatabase();
 		if(db != null){
-			if(name != null && score > 0){
+			if(name != null){
 				db.beginTransaction();
 				try{
 					db.execSQL("INSERT INTO ranking (name, score) " +
